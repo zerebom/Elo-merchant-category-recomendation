@@ -15,25 +15,25 @@ Elo-merchant-category-recomendation
 │   │   ├── train.csv
 │   │   └── test.csv
 │   └── output
-├── features
+├── features(書く特徴量の保存)
 │   ├── __init__.py
 │   ├── base.py
 │   └── create.py
 ├── logs
 │   └── logger.py
-├── models
+├── models（学習機。入力:df,params 出力:予測結果）
 │   └── lgbm.py
 ├── notebooks
 │   └── eda.ipynb
-├── scripts
+├── scripts(汎用コード)
 │   └── convert_to_feather.py
-├── utils
+├── utils(汎用コード)
 │   └── __init__.py
 ├── .gitignore
 ├── .pylintrc
 ├── LICENSE
 ├── README.md
-├── run.py
+├── run.py(コンペに応じて書く、計算コード)
 └── tox.ini
 ```
 # Commands

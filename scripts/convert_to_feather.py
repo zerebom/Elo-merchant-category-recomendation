@@ -1,9 +1,11 @@
 import pandas as pd
 
 target = [
-    'train',
-    'test',
+    'historical_transactions',
+    'new_merchant_transactions'
 ]
+    # 'train',
+    # 'test',
 
 extension = 'csv'
 # extension = 'tsv'
