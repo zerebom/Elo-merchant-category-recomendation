@@ -1,7 +1,9 @@
 import pandas as pd
 import numpy as np
 import re as re
-
+import pandas as pd
+import seaborn as sns
+import time
 from features.base import Feature, get_arguments, generate_features
 
 Feature.dir = 'features'
@@ -73,56 +75,15 @@ class Age(Feature):
             labels=False
         )
 
-
-def get_title(name):
-    title_search = re.search(' ([A-Za-z]+)\.', name)
-    # If the title exists, extract and return it.
-    if title_search:
-        return title_search.group(1)
-    return ""
-
-
-class Title(Feature):
+class Quarter(Feature):
     def create_features(self):
-        title_mapping = {"Mr": 1, "Miss": 2, "Mrs": 3, "Master": 4, "Rare": 5}
+        data=train.append(test)
+        df['first_active_month'] = pd.to_datetime(df['first_active_month'])
+        df['quarter'] = df['first_active_month'].dt.quarter
 
-        train['Title'] = train['Name'] \
-            .apply(get_title) \
-            .replace([
-                'Lady',
-                'Countess',
-                'Capt',
-                'Col',
-                'Don',
-                'Dr',
-                'Major',
-                'Rev',
-                'Sir',
-                'Jonkheer',
-                'Dona'
-            ], 'Rare') \
-            .replace(['Mlle', 'Ms', 'Mme'], ['Miss', 'Miss', 'Mrs'])
-        train['Title'] = train['Name'].map(title_mapping).fillna(0)
-        test['Title'] = test['Name'] \
-            .apply(get_title) \
-            .replace([
-                'Lady',
-                'Countess',
-                'Capt',
-                'Col',
-                'Don',
-                'Dr',
-                'Major',
-                'Rev',
-                'Sir',
-                'Jonkheer',
-                'Dona'
-            ], 'Rare') \
-            .replace(['Mlle', 'Ms', 'Mme'], ['Miss', 'Miss', 'Mrs'])
-        test['Title'] = test['Title'].map(title_mapping).fillna(0)
 
-        self.train['Title'] = train['Title']
-        self.test['Title'] = test['Title']
+def funcname(self, parameter_list):
+    raise NotImplementedError
 
 
 if __name__ == '__main__':
